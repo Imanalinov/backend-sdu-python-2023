@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1 class="mb-4">This is a admin page</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title">
+    </div>
+    <div class="mb-5">
+      <label for="file" class="form-label">File</label>
+      <input type="file" class="form-control" id="file" name="file">
+    </div>
+    <div class="mb-5">
+      <label for="imgUrl" class="form-label">File</label>
+      <input type="text" class="form-control" id="imgUrl" name="imgUrl">
+    </div>
+    {#    <div class="mb-3">#}
+    {#      <label for="" class="form-label"></label>#}
+    {#      <input type="" class="form-control" id="" placeholder="" name="">#}
+    {#    </div>#}
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1 class="mb-5">
+    One Post
+    <span class="text-info">
+      "{{ post.title }}"
+    </span>
+  </h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">
+    </div>
+    <div class="mb-3">
+      <label for="file" class="form-label">File</label>
+      <input type="text" class="form-control" id="file" name="file" value="{{ post.html_url }}">
+    </div>
+    <div class="mb-3">
+      <label for="time" class="form-label">Time</label>
+      <input type="text" class="form-control" id="time" name="time" value="{{ post.time }}" disabled>
+    </div>
+    <div class="mb-5">
+      <label for="watch" class="form-label">Time</label>
+      <input type="text" class="form-control" id="watch" name="watch" value="{{ post.watches }}">
+    </div>
+    <div class="d-flex">
+      <button class="btn btn-outline-success" type="submit">Save</button>
+      <a href="/adminka/post/delete/{{ post.id }}"
+         class="btn btn-outline-danger ml-3"
+         type="button"
+      >Delete Post</a>
+    </div>
+  </form>
+{% endblock %}

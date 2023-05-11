@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form class="w-50 mx-auto" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+      {{ form.username }}
+      {#      {% if errors|map:username %}#}
+      {#        {% for err in errors|map:username %}#}
+      {#          <div class="invalid-feedback">#}
+      {#            {{ err }}#}
+      {#          </div>#}
+      {#        {% endfor %}#}
+      {#      {% endif %}#}
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" placeholder="Email" name="email" id="email" class="form-control">
+      {#      {% if errors.email %}#}
+      {#        {% for err in errors.email %}#}
+      {#          <div class="invalid-feedback">#}
+      {#            {{ err }}#}
+      {#          </div>#}
+      {#        {% endfor %}#}
+      {#      {% endif %}#}
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" placeholder="Password" id="password1" name="password1" class="form-control">
+      {#      {% if errors|get_value_from_dict:password %}#}
+      {#        {% for err in errors.password %}#}
+      {#          <div class="invalid-feedback">#}
+      {#            {{ err }}#}
+      {#          </div>#}
+      {#        {% endfor %}#}
+      {#      {% endif %}#}
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input type="password" placeholder="Confirm Password" id="password2" name="password2" class="form-control">
+    </div>
+
+    <ul class="mb-3">
+      {% for key, value in errors.items %}
+        {% if key and value %}
+          <li>{{ key }} ---- {{ value }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="mb-3">
+      <button type="submit">Log In</button>
+    </div>
+  </form>
+{% endblock %}
