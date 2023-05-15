@@ -67,6 +67,8 @@ def SignUpPage(request):
 
 def postPage(request, id):
     post = Post.objects.get(pk=id)
+    post.watches = post.watches + 1
+    post.save()
     context = {
         'post': post
     }
